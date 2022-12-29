@@ -1,6 +1,9 @@
 package Lista;
 
 import Dados.Dados;
+import Dados.Amigos;
+
+import java.util.Locale;
 
 public class Lista<T> {
 
@@ -10,6 +13,21 @@ public class Lista<T> {
     private int tamanho;
     private int posicao;
 
+    public Dados<T> getInicio() {
+        return inicio;
+    }
+
+    public void setInicio(Dados<T> inicio) {
+        this.inicio = inicio;
+    }
+
+    public Dados<T> getFim() {
+        return fim;
+    }
+
+    public void setFim(Dados<T> fim) {
+        this.fim = fim;
+    }
 
     public boolean isEmpty() {
         return inicio == null && fim == null;
@@ -121,8 +139,7 @@ public class Lista<T> {
     }
 
     public T buscarRmv(Lista<T> lista, T valor) {
-        Dados<T> aux, dado = null;
-        aux = lista.inicio;
+        Dados<T> aux = lista.inicio, dado = null;
 
         while (aux.getElemento() != valor) {
 
@@ -148,19 +165,19 @@ public class Lista<T> {
         return posicao;
     }
 
-    public void sort() {
 
-
-    }
 
     @Override
     public String toString() {
+
         StringBuilder str = new StringBuilder("tamanho: " + tamanho + " \n");
         Dados<T> local = inicio;
+
         while (local != null) {
             str.append(local.getElemento()).append("\n ");
             local = local.getProximo();
         }
+
         return str.toString();
     }
 }

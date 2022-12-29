@@ -18,15 +18,17 @@ public class Applicativo {
 Lista<Amigos> l = new Lista<Amigos>();
             System.out.println(l);
         l.inserirInicio(iniciar);
+        l.inserirInicio(amigos);
+        l.inserirInicio(amigos1);
         r.convidarAmigo(l,amigos);
         r.convidarAmigo(l,amigos1);
         r.convidarAmigo(l,amigos2);
         r.adicionarMaisAmigos(l,amigos3);
-
+        System.out.println(l);
         r.exibirAmigos(l);
         r.apagarAmigo(l,amigos1);
         r.exibirAmigos(l);
-//        System.out.println(l.buscarL(l,a3));
+
 
 
 

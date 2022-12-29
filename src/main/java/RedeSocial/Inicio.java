@@ -1,6 +1,7 @@
 package RedeSocial;
 
 import Dados.Amigos;
+import Dados.Dados;
 import Lista.Lista;
 
 import java.util.Locale;
@@ -27,4 +28,6 @@ public class Inicio {
         
 
     }
+
+
 }
