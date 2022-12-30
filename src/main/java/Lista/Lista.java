@@ -3,7 +3,7 @@ package Lista;
 import Dados.Dados;
 import Dados.Amigos;
 
-import java.util.Locale;
+import java.util.Objects;
 
 public class Lista<T> {
 
@@ -11,7 +11,6 @@ public class Lista<T> {
     private Dados<T> inicio;
     private Dados<T> fim;
     private int tamanho;
-    private int posicao;
 
     public Dados<T> getInicio() {
         return inicio;
@@ -49,11 +48,10 @@ public class Lista<T> {
     }
 
 
-    public T removerInicio() {
+    public void removerInicio() {
         if (inicio == null) {
-            return null;
+            return;
         }
-        T remov = inicio.getElemento();
         inicio = inicio.getProximo();
         if (inicio != null) {
             inicio.setAnterior(null);
@@ -61,7 +59,6 @@ public class Lista<T> {
             fim.setElemento(null);
         }
         tamanho--;
-        return remov;
     }
 
     public void inserirFinal(T valor) {
@@ -79,11 +76,11 @@ public class Lista<T> {
         tamanho++;
     }
 
-    public T removerFinal() {
+    public void removerFinal() {
         if (fim == null) {
-            return null;
+            return;
         }
-        T remov = fim.getElemento();
+
         fim = fim.getAnterior();
         if (fim != null) {
             fim.setProximo(null);
@@ -91,7 +88,6 @@ public class Lista<T> {
             inicio.setElemento(null);
         }
         tamanho--;
-        return remov;
     }
 
     public void inserirMeio(int indice, T valor) {
@@ -115,13 +111,15 @@ public class Lista<T> {
         }
     }
 
-    public T removerMeio(int indice) {
+    public void removerMeio(int indice) {
         if (indice < 0 || indice >= tamanho || inicio == null) {
-            return null;
+            return;
         } else if (indice == 0) {
-            return removerInicio();
+            removerInicio();
+            return;
         } else if (indice == tamanho - 1) {
-            return removerFinal();
+            removerFinal();
+            return;
         }
 
         Dados<T> local = inicio;
@@ -135,42 +133,39 @@ public class Lista<T> {
             local.getProximo().setAnterior(local.getAnterior());
         }
         tamanho--;
-        return local.getElemento();
     }
 
-    public T buscarRmv(Lista<T> lista, T valor) {
-        Dados<T> aux = lista.inicio, dado = null;
 
-        while (aux.getElemento() != valor) {
+    public int buscarRmv(Lista<Amigos> lista,String valor) {
+        Dados<Amigos> aux = lista.inicio;
+        int posicao =0;
 
+        while (!Objects.equals(aux.getElemento().toString(), valor)) {
             aux = aux.getProximo();
             posicao++;
         }
-        dado = aux;
 
-        return dado.getElemento();
+
+        return posicao;
     }
 
-    public boolean buscarList(Lista<T> lista, T valor) {
-        for (Dados<T> aux = lista.inicio; aux.getProximo() != null; aux = aux.getProximo()) {
-            if (aux.getElemento().equals(valor)) {
+    public boolean buscarList(Lista<Amigos> lista, String valor) {
+        for (Dados<Amigos> aux = lista.inicio; aux.getProximo() != null; aux = aux.getProximo()) {
+            if (aux.getElemento().toString().equals(valor)) {
                 return true;
-
             }
         }
         return false;
     }
 
-    public int getPosicao() {
-        return posicao;
-    }
+
 
 
 
     @Override
     public String toString() {
 
-        StringBuilder str = new StringBuilder("tamanho: " + tamanho + " \n");
+        StringBuilder str = new StringBuilder();
         Dados<T> local = inicio;
 
         while (local != null) {

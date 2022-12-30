@@ -1,67 +1,52 @@
 package RedeSocial;
 
 import Dados.Amigos;
-import Dados.Dados;
 import Lista.Lista;
+
 
 
 
 public class RedeSocial<T> {
 
 
-    public void convidarAmigo(Lista<T> lista, T valor){
-        if (!lista.buscarList(lista,valor)) {
+    public void convidarAmigo(Lista<Amigos> lista, Amigos valor){
+        if (!lista.buscarList(lista,valor.toString())) {
             lista.inserirInicio(valor);
         }
     }
 
-    public void adicionarMaisAmigos(Lista<T> lista,T valor){
-        if (!lista.buscarList(lista,valor)){
-            lista.inserirMeio(2,valor);
-        }
-
+    public void adicionarMaisAmigos(Lista<Amigos> lista,Amigos valor){
+        convidarAmigo(lista,valor);
     }
-    public void apagarAmigo(Lista<T> lista, T valor){
-        if (lista.isEmpty()){
-            throw new RuntimeException("não existe amigos");
+    public void apagarAmigo(Lista<Amigos> lista, Amigos valor){
+        if (lista.buscarList(lista,valor.toString())){
+            lista.removerMeio(lista.buscarRmv(lista,valor.toString()));
         }
         else {
-            lista.buscarRmv(lista,valor);
-            lista.removerMeio(lista.getPosicao());
+            throw new RuntimeException("não existe amigos com estas caracteristicas");
         }
 
     }
 
     public void exibirAmigos(Lista<Amigos> lista){
+        Ordenar ordenar = new Ordenar();
+
         if (!lista.isEmpty()){
-//            remove o valor que foi inserido pra inciar a lista
-            lista.removerFinal();
-//            faz o sort
-            Sort(lista);
-//            printa a lista
 
-            System.out.println(lista);
-
+         System.out.println(ordenar.exibirFeminino(lista));
+         System.out.println(ordenar.exibirMasculino(lista));
         }
-
-
+        else {
+            throw new RuntimeException("Lista de amigos vazia");
+        }
     }
+
+
 
     public void exibirAfinidade(Lista<T> lista){
 
     }
-    public void Sort(Lista<Amigos> lista){
 
-            for ( Dados<Amigos> i = lista.getInicio(); i.getProximo() !=null ; i = i.getProximo()){
-                for (Dados<Amigos> j = i.getProximo(); j != null; j = j.getProximo()){
-                    if (j.getElemento().getIdade() < i.getElemento().getIdade()) {
-                        Amigos aux = i.getElemento();
-                        i.setElemento(j.getElemento());
-                        j.setElemento(aux);
-                        }
-                }
-            }
-    }
 
 
 
