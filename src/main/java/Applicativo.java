@@ -20,22 +20,22 @@ public class Applicativo {
         Amigos amigos3 = new Amigos("amigo 3","feminino".toUpperCase(Locale.ROOT),15);
         Amigos amigos4 = new Amigos("amigo 2","masculino".toUpperCase(Locale.ROOT),20);
         Amigos amigos5 = new Amigos("amigo 5","feminino".toUpperCase(Locale.ROOT),15);
-//Lista<Amigos> l = new Lista<Amigos>();
-//
-//            System.out.println(l);
-//        l.inserirInicio(iniciar);
-//        l.inserirInicio(amigos);
-//        l.inserirInicio(amigos1);
-//        r.convidarAmigo(l,amigos);
-//        r.convidarAmigo(l,amigos1);
-//        r.convidarAmigo(l,amigos2);
-//        r.adicionarMaisAmigos(l,amigos2);
-//        System.out.println(l);
-//        r.apagarAmigo(l, amigos4);
-//        System.out.println(l);
+Lista<Amigos> l = new Lista<Amigos>();
 
-        PerguntasQuizz p = new PerguntasQuizz();
-        p.perguntas(amigos5,listaNum);
+            System.out.println(l);
+        l.inserirInicio(iniciar);
+        l.inserirInicio(amigos);
+        l.inserirInicio(amigos1);
+        r.convidarAmigo(l,amigos);
+        r.convidarAmigo(l,amigos1);
+        r.convidarAmigo(l,amigos2);
+        r.adicionarMaisAmigos(l,amigos2);
+        System.out.println(l);
+        r.apagarAmigo(l, amigos4);
+        System.out.println(l);
+
+//        PerguntasQuizz p = new PerguntasQuizz();
+//        p.perguntas(amigos5,listaNum);
 
 //        Inicio i = new Inicio();
 //        i.iniciar();
