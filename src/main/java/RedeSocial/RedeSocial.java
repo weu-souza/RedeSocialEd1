@@ -41,6 +41,9 @@ public class RedeSocial<T> {
         }
     }
 
+public void responderPerguntas(){
+
+}
 
 
     public void exibirAfinidade(Lista<T> lista){

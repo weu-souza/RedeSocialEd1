@@ -48,10 +48,11 @@ public class Lista<T> {
     }
 
 
-    public void removerInicio() {
+    public T removerInicio() {
         if (inicio == null) {
-            return;
+            return null;
         }
+        T remov = inicio.getElemento();
         inicio = inicio.getProximo();
         if (inicio != null) {
             inicio.setAnterior(null);
@@ -59,6 +60,7 @@ public class Lista<T> {
             fim.setElemento(null);
         }
         tamanho--;
+        return remov;
     }
 
     public void inserirFinal(T valor) {
@@ -76,11 +78,11 @@ public class Lista<T> {
         tamanho++;
     }
 
-    public void removerFinal() {
+    public T removerFinal() {
         if (fim == null) {
-            return;
+            return null;
         }
-
+        T remov = fim.getElemento();
         fim = fim.getAnterior();
         if (fim != null) {
             fim.setProximo(null);
@@ -88,6 +90,7 @@ public class Lista<T> {
             inicio.setElemento(null);
         }
         tamanho--;
+        return remov;
     }
 
     public void inserirMeio(int indice, T valor) {
@@ -111,15 +114,15 @@ public class Lista<T> {
         }
     }
 
-    public void removerMeio(int indice) {
+    public T removerMeio(int indice) {
         if (indice < 0 || indice >= tamanho || inicio == null) {
-            return;
+            return null;
         } else if (indice == 0) {
-            removerInicio();
-            return;
+
+            return removerInicio();
         } else if (indice == tamanho - 1) {
-            removerFinal();
-            return;
+
+            return removerFinal();
         }
 
         Dados<T> local = inicio;
@@ -133,11 +136,12 @@ public class Lista<T> {
             local.getProximo().setAnterior(local.getAnterior());
         }
         tamanho--;
+        return local.getElemento();
     }
 
 
-    public int buscarRmv(Lista<Amigos> lista,String valor) {
-        Dados<Amigos> aux = lista.inicio;
+    public int buscarRmv(Lista<T> lista,String valor) {
+        Dados<T> aux = lista.inicio;
         int posicao =0;
 
         while (!Objects.equals(aux.getElemento().toString(), valor)) {
@@ -149,8 +153,8 @@ public class Lista<T> {
         return posicao;
     }
 
-    public boolean buscarList(Lista<Amigos> lista, String valor) {
-        for (Dados<Amigos> aux = lista.inicio; aux.getProximo() != null; aux = aux.getProximo()) {
+    public boolean buscarList(Lista<T> lista, String valor) {
+        for (Dados<T> aux = lista.inicio; aux.getProximo() != null; aux = aux.getProximo()) {
             if (aux.getElemento().toString().equals(valor)) {
                 return true;
             }

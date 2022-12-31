@@ -8,7 +8,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Inicio {
-    RedeSocial<Amigos> redeSocial = new RedeSocial<Amigos>();
+    Lista<Integer> listaNum = new Lista<Integer>();
     Amigos iniciar = new Amigos("","",0);
 
     Scanner sc = new Scanner(System.in);
@@ -60,6 +60,7 @@ RedeSocial<Amigos> r = new RedeSocial<Amigos>();
             case 2:
                 System.out.println("insira o nome a o sexo e a idade do amigo que queira remover: ");
                 r.apagarAmigo(lista,new Amigos(sc.next(),sc.next().toUpperCase(Locale.ROOT),sc.nextInt()));
+
                 break;
             case 3 :
                 r.exibirAmigos(lista);

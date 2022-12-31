@@ -3,6 +3,7 @@ import Dados.Amigos;
 import RedeSocial.RedeSocial;
 import RedeSocial.Ordenar;
 import RedeSocial.Inicio;
+import RedeSocial.PerguntasQuizz;
 
 import java.util.Locale;
 
@@ -10,14 +11,15 @@ import java.util.Locale;
 public class Applicativo {
     public static void main(String[] args){
         RedeSocial<Amigos> r = new RedeSocial<Amigos>();
+        Lista<Integer> listaNum = new Lista<Integer>();
 
-//        Amigos iniciar = new Amigos("","",0);
-//     Amigos amigos = new Amigos("amigo ","masculino".toUpperCase(Locale.ROOT),25);
-//        Amigos amigos1 = new Amigos("amigo 1","feminino".toUpperCase(Locale.ROOT),26);
-//        Amigos amigos2 = new Amigos("amigo 2","masculino".toUpperCase(Locale.ROOT),20);
-//        Amigos amigos3 = new Amigos("amigo 3","feminino".toUpperCase(Locale.ROOT),15);
-//        Amigos amigos4 = new Amigos("amigo 2","masculino".toUpperCase(Locale.ROOT),20);
-//        Amigos amigos5 = new Amigos("amigo 5","feminino".toUpperCase(Locale.ROOT),15);
+        Amigos iniciar = new Amigos("","",0);
+     Amigos amigos = new Amigos("amigo ","masculino".toUpperCase(Locale.ROOT),25);
+        Amigos amigos1 = new Amigos("amigo 1","feminino".toUpperCase(Locale.ROOT),26);
+        Amigos amigos2 = new Amigos("amigo 2","masculino".toUpperCase(Locale.ROOT),20);
+        Amigos amigos3 = new Amigos("amigo 3","feminino".toUpperCase(Locale.ROOT),15);
+        Amigos amigos4 = new Amigos("amigo 2","masculino".toUpperCase(Locale.ROOT),20);
+        Amigos amigos5 = new Amigos("amigo 5","feminino".toUpperCase(Locale.ROOT),15);
 //Lista<Amigos> l = new Lista<Amigos>();
 //
 //            System.out.println(l);
@@ -32,9 +34,11 @@ public class Applicativo {
 //        r.apagarAmigo(l, amigos4);
 //        System.out.println(l);
 
+        PerguntasQuizz p = new PerguntasQuizz();
+        p.perguntas(amigos5,listaNum);
 
-        Inicio i = new Inicio();
-        i.iniciar();
+//        Inicio i = new Inicio();
+//        i.iniciar();
 
 
 //        r.exibirAmigos(l);
