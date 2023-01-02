@@ -1,14 +1,12 @@
 package RedeSocial;
 
-import Dados.Amigos;
-import Dados.Dados;
-import Lista.Lista;
-
+import Dados.*;
+import Lista.*;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Inicio {
-    Lista<Integer> listaNum = new Lista<Integer>();
+
     Amigos iniciar = new Amigos("","",0);
 
     Scanner sc = new Scanner(System.in);
@@ -16,6 +14,7 @@ public class Inicio {
 RedeSocial<Amigos> r = new RedeSocial<Amigos>();
     public void iniciar(){
         Lista<Amigos> l = new Lista<Amigos>();
+
         l.inserirInicio(iniciar);
         System.out.println("digite a quantidade de amigos que deseja convidar: ");
         int n = sc.nextInt();
@@ -32,7 +31,7 @@ RedeSocial<Amigos> r = new RedeSocial<Amigos>();
 
        do {
 
-           System.out.println(" 1- adicionar mais amigos \n 2- Apagar amigos \n 3- Exibir amigos \n 4- Exibir afinidade \n 0-Fechar");
+           System.out.println(" 1- adicionar mais amigos \n 2- Apagar amigos \n 3- Exibir amigos\n 4- Responder quizz \n 5- Exibir afinidade \n 0-Fechar");
            x = sc.nextInt();
         menu(x,l);
 
@@ -45,7 +44,8 @@ RedeSocial<Amigos> r = new RedeSocial<Amigos>();
 
 
     public void menu(int x,Lista<Amigos> lista){
-
+        PerguntasQuizz p = new PerguntasQuizz();
+        Lista<Quizz> listaQuizz = new Lista<Quizz>();
         switch (x){
             case 1:
                 System.out.println("insira o nome a o sexo e a idade do amigo que queira adicionar: ");
@@ -66,7 +66,12 @@ RedeSocial<Amigos> r = new RedeSocial<Amigos>();
                 r.exibirAmigos(lista);
                 break;
             case 4:
-                r.exibirAfinidade(lista);
+                System.out.println("insira os dados da pessoa que deseja responder: ");
+//                p.perguntas(listaQuizz,new Amigos(sc.next(),sc.next().toUpperCase(Locale.ROOT),sc.nextInt()));
+                break;
+            case 5:
+
+
 
                 break;
             case 0:

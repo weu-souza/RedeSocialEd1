@@ -9,16 +9,16 @@ import Lista.Lista;
 public class RedeSocial<T> {
 
 
-    public void convidarAmigo(Lista<Amigos> lista, Amigos valor){
+    public void convidarAmigo(Lista<T> lista, T valor){
         if (!lista.buscarList(lista,valor.toString())) {
             lista.inserirInicio(valor);
         }
     }
 
-    public void adicionarMaisAmigos(Lista<Amigos> lista,Amigos valor){
+    public void adicionarMaisAmigos(Lista<T> lista,T valor){
         convidarAmigo(lista,valor);
     }
-    public void apagarAmigo(Lista<Amigos> lista, Amigos valor){
+    public void apagarAmigo(Lista<T> lista, T valor){
         if (lista.buscarList(lista,valor.toString())){
             lista.removerMeio(lista.buscarRmv(lista,valor.toString()));
         }
