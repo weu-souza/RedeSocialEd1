@@ -1,12 +1,12 @@
 package Dados;
 
 public class Afinidade {
-private Amigos amigos;
+private String amigos;
 private int afinidadeporcentagem;
 
 private String quizz;
 
-    public Afinidade(Amigos amigos, String quizz) {
+    public Afinidade(String amigos, String quizz) {
         setAmigos(amigos);
 
         setQuizz(quizz);
@@ -20,11 +20,11 @@ private String quizz;
         this.quizz = quizz;
     }
 
-    public Amigos getAmigos() {
+    public String getAmigos() {
         return amigos;
     }
 
-    public void setAmigos(Amigos amigos) {
+    public void setAmigos(String amigos) {
         this.amigos = amigos;
     }
 

@@ -50,23 +50,23 @@ public class PerguntasQuizz {
         for (Dados<Quizz> i = lista.getInicio(); i.getProximo() != null; i = i.getProximo()) {
             if (i.getElemento().getIdPergunta() == 1) {
                 if (i.getElemento().getRespostas().equals("cachorro".toUpperCase(Locale.ROOT))) {
-                    cachorro.inserirInicio(new Afinidade(i.getElemento().getAmigo(),i.getElemento().getRespostas()));
+                    cachorro.inserirInicio(new Afinidade(i.getElemento().getAmigo().getNome(),i.getElemento().getRespostas()));
 
                 }
                 if (i.getElemento().getRespostas().equals("gato".toUpperCase(Locale.ROOT))) {
-                    gato.inserirInicio(new Afinidade(i.getElemento().getAmigo(),i.getElemento().getRespostas()));
+                    gato.inserirInicio(new Afinidade(i.getElemento().getAmigo().getNome(),i.getElemento().getRespostas()));
 
                 }
             }
             if (i.getElemento().getIdPergunta() == 2) {
                 if (i.getElemento().getRespostas().equals("playstation".toUpperCase(Locale.ROOT))) {
 
-                    playstation.inserirInicio(new Afinidade(i.getElemento().getAmigo(),i.getElemento().getRespostas()));
+                    playstation.inserirInicio(new Afinidade(i.getElemento().getAmigo().getNome(),i.getElemento().getRespostas()));
 
                 }
                 if (i.getElemento().getRespostas().equals("xbox".toUpperCase(Locale.ROOT))) {
 
-                    xbox.inserirInicio(new Afinidade(i.getElemento().getAmigo(),i.getElemento().getRespostas()));
+                    xbox.inserirInicio(new Afinidade(i.getElemento().getAmigo().getNome(),i.getElemento().getRespostas()));
 
                 }
 
