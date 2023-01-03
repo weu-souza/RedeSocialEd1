@@ -1,7 +1,8 @@
 package RedeSocial;
 
 import Dados.Amigos;
-import Lista.Lista;
+import Dados.Quizz;
+import EstruturasDeDados.Lista;
 
 
 
@@ -43,11 +44,15 @@ public class RedeSocial<T> {
 
 public void responderPerguntas(){
 
+
 }
 
 
-    public void exibirAfinidade(Lista<T> lista){
+    public void exibirAfinidade(Lista<Quizz> lista){
+        PerguntasQuizz perguntasQuizz = new PerguntasQuizz();
 
+        System.out.println(perguntasQuizz.retornarCachorro(lista));
+        System.out.println(perguntasQuizz.retornarGato(lista));
     }
 
 

@@ -34,6 +34,6 @@ private String quizz;
 
     @Override
     public String toString() {
-        return "amigos: " + amigos +"resposta: "+quizz ;
+        return "amigos: " + amigos +", resposta: "+quizz ;
     }
 }

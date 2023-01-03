@@ -1,9 +1,9 @@
 package Dados;
 
-public class Dados<T>{
+public class Dado<T>{
     private T elemento;
-    private Dados<T> proximo;
-    private Dados<T> anterior;
+    private Dado<T> proximo;
+    private Dado<T> anterior;
 
 
 
@@ -16,19 +16,19 @@ public class Dados<T>{
         this.elemento = elemento;
     }
 
-    public Dados<T> getProximo() {
+    public Dado<T> getProximo() {
         return proximo;
     }
 
-    public void setProximo(Dados<T> proximo) {
+    public void setProximo(Dado<T> proximo) {
         this.proximo = proximo;
     }
 
-    public Dados<T> getAnterior() {
+    public Dado<T> getAnterior() {
         return anterior;
     }
 
-    public void setAnterior(Dados<T> anterior) {
+    public void setAnterior(Dado<T> anterior) {
         this.anterior = anterior;
     }
 

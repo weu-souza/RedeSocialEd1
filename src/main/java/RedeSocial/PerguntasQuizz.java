@@ -1,84 +1,73 @@
 package RedeSocial;
 import Dados.*;
 import Dados.Quizz;
-import Lista.Lista;
-
-
+import EstruturasDeDados.Lista;
+import EstruturasDeDados.Pilha;
 
 
 import java.util.Locale;
 
-import java.util.Scanner;
+
 
 public class PerguntasQuizz {
+    private double afinidadeCachorro;
+    private double afinidadeGato;
 
 
-    Scanner sc = new Scanner(System.in);
 
-    public void perguntas(Lista<Quizz> listaQuizz, Amigos amigos, String resposta, String resposta1) {
+    public Lista<Quizz> perguntas(Lista<Quizz> listaQuizz, Amigos amigos, String resposta, Lista<Amigos> listaA) {
 
-        for (int i = 1; i < 3; i++) {
-            switch (i) {
-                case 1:
-//                    System.out.println("você gosta de cachorro ou gato?");
-                    listaQuizz.inserirInicio(new Quizz(i, resposta.toUpperCase(Locale.ROOT), amigos));
-//                    listaQuizz.inserirInicio( new Quizz(i, sc.next().toUpperCase(Locale.ROOT),amigos));
 
-                    break;
 
-                case 2:
-//                    System.out.println("você gosta de playstation ou xbox?");
-                    listaQuizz.inserirInicio(new Quizz(i, resposta1.toUpperCase(Locale.ROOT), amigos));
-//                    listaQuizz.inserirInicio( new Quizz(i, sc.next().toUpperCase(Locale.ROOT),amigos));
-
-                    break;
-
-            }
+        if (listaA.buscarList(listaA,amigos.toString())){
+            listaQuizz.inserirInicio(new Quizz(resposta.toUpperCase(Locale.ROOT), amigos));
+        }
+        else {
+            throw new RuntimeException("não existe esse amigo na lista");
         }
 
 
-        perguntaAfinidade(listaQuizz);
 
+        return listaQuizz;
 
     }
+    public double retornarAfinidade(Lista<Quizz> lista){
+        int afinidade = 0;
+        for (Dado<Quizz> i = lista.getInicio(); i.getProximo() != null; i = i.getProximo()){
+            afinidade++;
+        }
+        return afinidade;
+    }
 
-    public void perguntaAfinidade(Lista<Quizz> lista) {
-        Lista<Afinidade> cachorro = new Lista<Afinidade>();
-        Lista<Afinidade> gato = new Lista<Afinidade>();
-        Lista<Afinidade> playstation = new Lista<Afinidade>();
-        Lista<Afinidade> xbox = new Lista<Afinidade>();
-        for (Dados<Quizz> i = lista.getInicio(); i.getProximo() != null; i = i.getProximo()) {
-            if (i.getElemento().getIdPergunta() == 1) {
-                if (i.getElemento().getRespostas().equals("cachorro".toUpperCase(Locale.ROOT))) {
-                    cachorro.inserirInicio(new Afinidade(i.getElemento().getAmigo().getNome(),i.getElemento().getRespostas()));
 
-                }
-                if (i.getElemento().getRespostas().equals("gato".toUpperCase(Locale.ROOT))) {
-                    gato.inserirInicio(new Afinidade(i.getElemento().getAmigo().getNome(),i.getElemento().getRespostas()));
-
-                }
-            }
-            if (i.getElemento().getIdPergunta() == 2) {
-                if (i.getElemento().getRespostas().equals("playstation".toUpperCase(Locale.ROOT))) {
-
-                    playstation.inserirInicio(new Afinidade(i.getElemento().getAmigo().getNome(),i.getElemento().getRespostas()));
-
-                }
-                if (i.getElemento().getRespostas().equals("xbox".toUpperCase(Locale.ROOT))) {
-
-                    xbox.inserirInicio(new Afinidade(i.getElemento().getAmigo().getNome(),i.getElemento().getRespostas()));
-
-                }
-
+    public Pilha<Afinidade> retornarCachorro(Lista<Quizz> lista){
+        Pilha<Afinidade> cachorro = new Pilha<Afinidade>();
+        System.out.println("cachorro:");
+        for (Dado<Quizz> i = lista.getInicio(); i.getProximo() != null; i = i.getProximo()) {
+            if (i.getElemento().getRespostas().equals("cachorro".toUpperCase(Locale.ROOT))) {
+                cachorro.push(new Afinidade(i.getElemento().getAmigo().getNome(),i.getElemento().getRespostas()));
+                afinidadeCachorro++;
             }
         }
-        System.out.println(cachorro);
-        System.out.println(gato);
-        System.out.println(playstation);
-        System.out.println(xbox);
-
-
-
+        double afinidade = afinidadeCachorro/retornarAfinidade(lista)*100;
+        System.out.println("afinidade = "+afinidade+"%");
+        return cachorro;
     }
+
+    public Pilha<Afinidade> retornarGato(Lista<Quizz> lista){
+        System.out.println("gato:");
+        Pilha<Afinidade> gato = new Pilha<Afinidade>();
+        for (Dado<Quizz> i = lista.getInicio(); i.getProximo() != null; i = i.getProximo()) {
+            if (i.getElemento().getRespostas().equals("gato".toUpperCase(Locale.ROOT))) {
+                gato.push(new Afinidade(i.getElemento().getAmigo().getNome(),i.getElemento().getRespostas()));
+                afinidadeGato++;
+            }
+        }
+        double afinidade = afinidadeGato/retornarAfinidade(lista)*100;
+
+        System.out.println("afinidade = "+afinidade+"%");
+        return gato;
+    }
+
 
 }

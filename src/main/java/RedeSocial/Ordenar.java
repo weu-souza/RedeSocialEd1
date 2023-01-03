@@ -1,17 +1,16 @@
 package RedeSocial;
 
 import Dados.Amigos;
-import Dados.Dados;
-import Lista.Lista;
-import Dados.Quizz;
+import Dados.Dado;
+import EstruturasDeDados.Lista;
 
 import java.util.Locale;
 
 public class Ordenar {
     public void SortAmigos(Lista<Amigos> lista){
 
-        for (Dados<Amigos> i = lista.getInicio(); i.getProximo() !=null ; i = i.getProximo()){
-            for (Dados<Amigos> j = i.getProximo(); j != null; j = j.getProximo()){
+        for (Dado<Amigos> i = lista.getInicio(); i.getProximo() !=null ; i = i.getProximo()){
+            for (Dado<Amigos> j = i.getProximo(); j != null; j = j.getProximo()){
                 if (j.getElemento().getIdade() < i.getElemento().getIdade()) {
                     Amigos aux = i.getElemento();
                     i.setElemento(j.getElemento());
@@ -23,7 +22,7 @@ public class Ordenar {
     public Lista<Amigos> exibirFeminino(Lista<Amigos> lista){
         Lista<Amigos> feminino = new Lista<Amigos>();
         System.out.println("Feminino: \n");
-        for (Dados<Amigos> i = lista.getInicio(); i.getProximo() !=null ; i = i.getProximo()){
+        for (Dado<Amigos> i = lista.getInicio(); i.getProximo() !=null ; i = i.getProximo()){
             if (i.getElemento().getSexo().equals("feminino".toUpperCase(Locale.ROOT))){
                 feminino.inserirInicio(i.getElemento());
                 SortAmigos(feminino);
@@ -37,7 +36,7 @@ public class Ordenar {
     public Lista<Amigos> exibirMasculino(Lista<Amigos> lista){
         Lista<Amigos> masculino = new Lista<Amigos>();
         System.out.println("Masculino: \n");
-        for (Dados<Amigos> i = lista.getInicio(); i.getProximo() !=null ; i = i.getProximo()){
+        for (Dado<Amigos> i = lista.getInicio(); i.getProximo() !=null ; i = i.getProximo()){
             if (i.getElemento().getSexo().equals("masculino".toUpperCase(Locale.ROOT))) {
                 masculino.inserirInicio(i.getElemento());
                 SortAmigos(masculino);
@@ -46,18 +45,7 @@ public class Ordenar {
         return masculino;
     }
 
-    public void SortAfinidade(Lista<Quizz> lista){
 
-        for (Dados<Quizz> i = lista.getInicio(); i.getProximo() !=null ; i = i.getProximo()){
-            for (Dados<Quizz> j = i.getProximo(); j != null; j = j.getProximo()){
-                if (j.getElemento().getIdPergunta() > i.getElemento().getIdPergunta()) {
-                    Quizz aux = i.getElemento();
-                    i.setElemento(j.getElemento());
-                    j.setElemento(aux);
-                }
-            }
-        }
-    }
 
 
 

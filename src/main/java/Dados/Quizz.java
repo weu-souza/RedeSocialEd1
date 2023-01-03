@@ -1,12 +1,12 @@
 package Dados;
 
 public class Quizz {
-    private Integer idPergunta;
+
     private String respostas;
     private Amigos amigo;
 
-    public Quizz(Integer idPergunta, String respostas,Amigos amigo) {
-        setIdPergunta(idPergunta);
+    public Quizz(String respostas,Amigos amigo) {
+
         setRespostas(respostas);
         setAmigo(amigo);
     }
@@ -19,13 +19,7 @@ public class Quizz {
         this.amigo = amigo;
     }
 
-    public Integer getIdPergunta() {
-        return idPergunta;
-    }
 
-    public void setIdPergunta(Integer idPergunta) {
-        this.idPergunta = idPergunta;
-    }
 
     public String getRespostas() {
         return respostas;
@@ -37,7 +31,6 @@ public class Quizz {
 
     @Override
     public String toString() {
-        return "idPergunta =" + idPergunta +
-                ", respostas =" + respostas+", Amigo = "+amigo.getNome();
+        return " respostas =" + respostas+", Amigo = "+amigo.getNome();
     }
 }
